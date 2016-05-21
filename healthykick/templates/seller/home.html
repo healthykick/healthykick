@@ -1,0 +1,209 @@
+{% extends "seller/base.html" %}
+{% block content %}
+{% load staticfiles %}
+	<div class="header header-bg">
+		<div class="container">
+			<div class="row"> 
+				<div class="col-md-6">
+					<div class="logo wow slideInDown">
+						<a href="#"><img src="{% static 'seller/res/img/logo.png' %}" alt=""></a>
+					</div>            
+				</div>
+				<div class="col-md-offset-3 col-md-3 header-login">
+					<div class="login-box wow fadeIn" data-wow-delay="1s">
+						<div class="login-box-body">
+							<p class="login-box-msg">Seller login</p>
+							<form method="post" action="#">
+								<input type="hidden" name="path" value="{{request.get_full_path}}">
+								<div class="form-group has-feedback">
+									<input type="email" name="email" class="form-control" placeholder="Email">
+									<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+								</div>
+								<div class="form-group has-feedback">
+									<input type="password" name="password" class="form-control" placeholder="Password">
+									<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+								</div>
+								<div class="row">
+									<div class="col-xs-8">                        
+										<label data-toggle="modal" data-target=".bs-example-modal-lg">
+											<a href="#">I forgot my password</a>
+										</label>                        
+									</div>
+									<div class="col-xs-4">
+										<button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
+									</div>
+								</div>
+							</form>                  
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Forgot your password ?</h4>
+				</div>
+				<form method="post" action="#">
+					<input type="hidden" name="path" value="{{request.get_full_path}}"> 
+					<div class="modal-body">
+						<p>Enter your email address to receive a link for creating a new password</p>
+						<div class="form-group has-feedback">
+							<input type="email" name="email" class="form-control" placeholder="Email">
+							<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+						</div>
+						<p>Please provide the same email address with which you registered on healtykick Markeplace</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="wapper" style="background-image: url('{% static 'seller/res/img/slider1.jpg' %}');">
+		<div class="container">
+			<div class="row"> 
+				<div class="col-md-offset-4 col-md-4 col-xs-12 hold-transition">
+					<div class="login-box register-box wow tada">
+						<div class="login-box-body">
+							<p class="login-box-msg">Register today start your session</p>
+							<form method="post" action="{% url 'seller:create_account' %}">
+								{% csrf_token %}
+								<input type="hidden" name="path" value="{{request.get_full_path}}"> 
+								<div class="form-group has-feedback">
+									<input type="email" name="email" class="form-control" placeholder="Email">
+									<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+								</div>
+								<div class="form-group has-feedback">
+									<input type="password" name="password" class="form-control" placeholder="Password">
+									<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+								</div>
+								<div class="row">									
+									<div class="col-xs-12">
+										<button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> 
+	</div>	
+
+	<div class="step-section">
+		<div class="container">
+			<div class="row"> 
+				<div class="col-xs-12">
+					<div class="title text-center wow fadeIn" data-wow-duration="2s"> 
+						<b>Selling on Healtykick is very easy</b>
+					</div>  
+				</div>
+			</div>
+
+			<div class="row margin-md-Bottom-30"> 
+				<div class="col-md-6 col-xs-12">
+					<img src="{% static 'seller/res/img/step1.png' %}" alt="step1"> 
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<img src="{% static 'seller/res/img/step2.png' %}" alt="step2"> 
+				</div>
+			</div>
+
+			<div class="row"> 
+				<div class="col-md-6 col-xs-12">
+					<img src="{% static 'seller/res/img/step3.png' %}" alt="step3"> 
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<img src="{% static 'seller/res/img/step4.png' %}" alt="step4"> 
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bg-gray wapper" style="background-image: url('{% static 'seller/res/img/sell.png' %}');">
+		<div class="container">
+			<div class="row"> 
+				<div class="col-md-offset-2 col-md-8 col-xs-12 text-center">
+					<div class="title wow fadeIn" data-wow-duration="2s"> 
+						<b>Sell on Healtykick</b>
+					</div>
+					<div class="text-info wow fadeIn " data-wow-delay="0.2s">
+						<p>Bootstrap ships with vanilla CSS, but its source code utilizes the two most popular CSS preprocessors, Less and Sass. Quickly get started with precompiled CSS or build on the source.Responsive across devices One framework, every device.Bootstrap easily and efficiently scales your websites and applications with a single code base, from phones to tablets to desktops with CSS </p>
+						<p>Bootstrap ships with vanilla CSS, but its source code utilizes the two most popular CSS preprocessors, Less and Sass. Quickly get started with precompiled CSS or build on the source.Responsive across devices One framework, every device.Bootstrap easily and efficiently scales your websites and applications with a single code base, from phones to tablets to desktops with CSS </p>
+						<p>Bootstrap ships with vanilla CSS, but its source code utilizes the two most popular CSS preprocessors, Less and Sass. Quickly get started with precompiled CSS or build on the source.Responsive across devices One framework, every device.Bootstrap easily and efficiently scales your websites and applications with a single code base, from phones to tablets to desktops with CSS </p>
+					</div>  
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="wapper" style="background-image: url('{% static 'seller/res/img/easy.jpg' %}');height:450px;">	
+		<div class="container">
+		    <div class="row"> 
+		        <div class="col-xs-12 ">
+		          	<div class="wapper-text text-center tlt" data-in-effect="fadeIn" data-out-effect="fadeOut" >		          	
+		          		<p>carousel-captioncarousel-captioncarousel-caption</p>
+		          	</div>		          	
+		        </div>
+		    </div>
+		</div>
+	</div>
+
+		<footer id="login-footer">
+			<div class="container margin-xs-Bottom-50">
+			    <div class="row"> 
+			        <div class="col-md-6 col-xs-12 text-center wow fadeInLeft">
+			    		<label>Contact Us</label>
+
+						<form>
+							<div class="form-group">
+								<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+							</div>
+							<div class="form-group">
+								<textarea class="form-control" rows="3" placeholder="Messages...."></textarea>
+							</div>
+							<button type="submit" class="btn btn-primary btn-block btn-flat">Sand Message</button>
+						</form>
+			        </div>
+
+			        <div class="col-md-3 col-xs-12 text-center wow fadeInUp">
+			        	<label>Social Links</label> 
+			        	<div class="social-link">
+			        		<a href=""><i class="fa fa-facebook-official"></i></a> <br>
+							<a href=""><i class="fa fa-twitter-square"></i></a> <br>
+							<a href=""><i class="fa fa-linkedin"></i></a>
+			        	</div> 
+			        </div>
+
+					<div class="col-md-3 col-xs-12 text-center wow fadeInRight">
+			        	<label>Get Help</label> 
+			        	<div class="help">
+			        		<a href=""> HELP AND FAQ</a>
+			        		<a href=""> REQUEST SUPPORT</a>
+			        	</div> 
+			        </div>
+
+			    </div>
+			    
+			</div>
+			<div class="mini-footer">
+				<div class="container">
+					<div class="row  text-center">
+						<div class="col-xs-12">
+							<p>© 2016 - Healtykick  All right  reserved.</p>
+						</div>		    	
+				    </div>
+				</div>
+			</div>    
+		</footer> 
+
+{% endblock content %}

@@ -1,0 +1,168 @@
+{% extends "seller/base.html" %}
+{% block content %}
+{% load staticfiles %}
+
+	<div class="header header-bg">
+		<div class="container">
+			<div class="row"> 
+				<div class="col-md-12 text-center">
+					<div class="logo wow slideInDown">
+						<a href="#"><img src="{% static 'seller/res/img/logo.png' %}" alt=""></a>
+					</div><!-- /.login-logo -->              
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<div class="bg-light-skyblue padding-md-Bottom-50">
+		<div class="container">
+		    <div class="row"> 
+		        <div class="col-md-12 text-center">
+		        	<div class="title wow fadeIn" data-wow-delay="1s"> 
+						<b>Grow your business. Sell on Healthykick.</b>
+						<p>It's simple and very fast.</p>
+					</div>		          
+		        </div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 wow fadeIn" data-wow-delay="1.4s" >
+					<h3>Create your Account</h3>					
+				</div>
+			</div>
+			<div class="row">				
+	        	<div class="col-md-9 wow bounceInLeft" data-wow-delay="1.5s">
+					<div class="box box-success">
+						<div class="box-header with-border">
+							<h3 class="box-title">All details are mandatory</h3>
+						</div><!-- /.box-header -->
+						<!-- form start -->
+						<form class="form-horizontal" method="post" action="{% url 'seller:create_seller_details' %}">
+							<input type="hidden" name="path" value="{{request.get_full_path}}">
+							<input type="hidden" name="seller_id" value="{{seller_id}}">
+							<div class="box-body">
+								<!--<div class="form-group">
+									<label for="inputYourName" class="col-sm-3 control-label">Seller Name</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="Business name" placeholder="Business name">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputYourCategory" class="col-sm-3 control-label">Your Main Selling Category</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="Your Main Selling Category" placeholder="Your Main Selling Category">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-3 control-label">Create Password</label>
+									<div class="col-sm-9">
+										<input type="password" class="form-control" id="inputPassword3" placeholder="Create Password">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-3 control-label">Retype Password</label>
+									<div class="col-sm-9">
+										<input type="password" class="form-control" id="inputPassword3" placeholder="Retype Password">
+									</div>
+								</div>-->
+
+								<div class="form-group">
+									<label for="inputnnumber" class="col-sm-3 control-label">Mobile Number</label>
+									<div class="col-sm-9">
+										<div class="input-group">
+											<input type="text" name="phone_number" class="form-control" id="inputPassword3" placeholder="Mobile Number">
+											<span class="input-group-addon"  data-toggle="modal" data-target="#myModal"><a href="#"> send OTP</a></span>
+										</div>
+									</div>
+								</div>
+							</div><!-- /.box-body -->
+							<div class="box-footer">
+								<p class="text-center">
+									If you have read and agree to the <a href="">Terms and Conditions</a>, please continue
+								</p>
+						
+								<button type="reset" onclick="javascript.void(0)" class="btn btn-default">Reset</button>
+								<button type="submit" class="btn btn-primary pull-right">Continue</button>
+							</div><!-- /.box-footer -->
+						</form>
+					</div><!-- /.box -->						
+				</div>
+				<div class="col-md-3">
+					<div class="img-box wow fadeIn" data-wow-delay="1.9s">
+						<div class="img-text">
+							<h2 class="tlt" data-in-effect="fadeIn" data-out-effect="fadeOut">Create<br/> your<br/> Account</h2>
+						</div>
+						<img src="{% static 'seller/res/img/create-account.jpg' %}" alt="">
+					</div>
+				</div>		       	
+		    </div>
+		</div>
+	</div>	
+	
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Verify your code</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<form action="">
+		      		<div class="form-group">
+						<label for="exampleInputOTP">Type your OTP code</label>
+						<input type="text" class="form-control" id="exampleInputPassword1" placeholder="OTP code">
+					</div>
+		      	</form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">confirm</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+	
+
+	<footer class="wow fadeInUp">
+		<div class="mini-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<div class="foot-links">
+							<ul class="navigation horizontal-navigation">
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">Privacy policy</a>
+				                </li>
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">Terms of use</a>
+				                </li>
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">Packaging Guidelines</a>
+				                </li>
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">Help &amp; FAQs</a>
+				                </li>
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">API Documentation</a>
+				                </li>
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">Interactive APIs</a>
+				                </li>
+							</ul>
+						</div>
+					</div>		    	
+			    </div>
+
+			    <div class="row">
+			    	<div class="col-xs-12 text-center">
+			    		<p>© 2016 - Healtykick  All right  reserved.</p>
+			    	</div>
+			    </div>
+			</div>
+		</div>    
+	</footer>	
+	
+{% endblock content %}

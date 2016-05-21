@@ -1,0 +1,201 @@
+{% extends "seller/base.html" %}
+{% block content %}
+{% load staticfiles %}
+	<div class="header header-bg">
+		<div class="container">
+			<div class="row"> 
+				<div class="col-md-12 text-center">
+					<div class="logo wow slideInDown">
+						<a href="#"><img src="{% static 'seller/res/img/logo.png' %}" alt=""></a>
+					</div><!-- /.login-logo -->              
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="bg-light-skyblue padding-md-Bottom-50">
+		<div class="container">
+		    <div class="row">
+				<div class="col-md-12 wow fadeIn" data-wow-delay="1s">
+					<h3>Business Account setting</h3>					
+				</div>
+			</div>
+
+			<div class="row">				
+	        	<div class="col-md-9 wow bounceInLeft" data-wow-delay="1.5s">
+					<div class="box box-success">
+						<!-- form start -->
+						<form class="form-horizontal" method="post" action="{% url 'seller:create_business_details' %}">
+							<div class="box-body">
+								<div class="box-header text-center">
+									<h3 class="box-title">Business details</h3>
+								</div><!-- /.box-header -->
+								<div class="form-group">
+									<label for="inputBusiness name" class="col-sm-3 control-label">Business name</label>
+									<div class="col-sm-9">
+										<input type="text" name="business_name" class="form-control" id="Business name" placeholder="Business name">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputPAN" class="col-sm-3 control-label">PAN</label>
+									<div class="col-sm-9">
+										<input type="text" name="pan_number" class="form-control" id="Your PAN" placeholder="PAN">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputTIN" class="col-sm-3 control-label">TIN</label>
+									<div class="col-sm-9">
+										<input type="text" name="tim_number" class="form-control" id="Your TIN" placeholder="TIN">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputYourTAN" class="col-sm-3 control-label">TAN</label>
+									<div class="col-sm-9">
+										<input type="text" name="tan_number" class="form-control" id="Your TAN" placeholder="TAN">
+									</div>
+								</div>
+
+								<div class="box-header text-center">
+									<h3 class="box-title">Bank Details</h3>
+								</div><!-- /.box-header -->
+
+								<div class="form-group">
+									<label for="inputAccount holder name" class="col-sm-3 control-label">Account holder name</label>
+									<div class="col-sm-9">
+										<input type="text" name="account_holder_name" class="form-control" id="inputAccount holder name" placeholder="Account holder name">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputBank account number" class="col-sm-3 control-label">Bank account number</label>
+									<div class="col-sm-9">
+										<input type="text" name="bank_account_number" class="form-control" id="inputBank account number" placeholder="Bank account number">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputBank account number" class="col-sm-3 control-label">Retype Bank account number</label>
+									<div class="col-sm-9">
+										<input type="text" name="re_banck_account_number" class="form-control" id="inputBank account number" placeholder="Retype Bank account number">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputIFSE" class="col-sm-3 control-label">IFSE</label>
+									<div class="col-sm-9">
+										<input type="text" name="ifsc_code" class="form-control" id="inputIFSE" placeholder="IFSE">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputBank Name" class="col-sm-3 control-label">Bank Name</label>
+									<div class="col-sm-9">
+										<input type="text" name="bank_name" class="form-control" id="inputBank Name" placeholder="Bank Name">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputBank Branch" class="col-sm-3 control-label">Bank Branch</label>
+									<div class="col-sm-9">
+										<input type="text" name="bank_branch" class="form-control" id="inputBank Branch" placeholder="Bank Branch">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputState" class="col-sm-3 control-label">State</label>
+									<div class="col-sm-9">
+										<input type="text" name="bank_state" class="form-control" id="inputState" placeholder="State">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputCity" class="col-sm-3 control-label">City</label>
+									<div class="col-sm-9">
+										<input type="text" name="bank_city" class="form-control" id="inputCity" placeholder="City">
+									</div>
+								</div>
+
+								<div class="box-header text-center">
+									<h3 class="box-title">Store Details</h3>
+								</div><!-- /.box-header -->
+
+								<div class="form-group">
+									<label for="inputDisplay name" class="col-sm-3 control-label">Display name</label>
+									<div class="col-sm-9">
+										<input type="text" name="store_name" class="form-control" id="inputDisplay name" placeholder="Display name">
+									</div>
+								</div>								
+
+								<div class="form-group">
+									<label for="inputStore Discription" class="col-sm-3 control-label">Store Discription</label>
+									<div class="col-sm-9">
+										<textarea class="form-control" name="store_description" rows="4" placeholder="Discription...."></textarea>
+									</div>
+								</div>								
+							</div><!-- /.box-body -->
+							<div class="box-footer">						
+								<button type="reset" class="btn btn-default">Cancel</button>
+								<button type="submit" class="btn btn-primary pull-right">Continue</button>
+							</div><!-- /.box-footer -->
+						</form>
+					</div><!-- /.box -->						
+				</div>
+				<div class="col-md-3">
+					<div class="img-box wow fadeIn" data-wow-delay="1.9s">
+						<div class="img-text">
+							<h2 class="tlt" data-in-effect="fadeIn" data-out-effect="fadeOut">Create<br/> your<br/> Seller Account</h2>
+						</div>
+						<img src="{% static 'seller/res/img/create-account.jpg' %}" alt="">
+					</div>
+				</div>		       	
+		    </div>
+
+		        
+		    </div>
+		</div>
+	</div>	
+
+	<footer  class="wow fadeInUp">
+		<div class="mini-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<div class="foot-links">
+							<ul class="navigation horizontal-navigation">
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">Privacy policy</a>
+				                </li>
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">Terms of use</a>
+				                </li>
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">Packaging Guidelines</a>
+				                </li>
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">Help &amp; FAQs</a>
+				                </li>
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">API Documentation</a>
+				                </li>
+				                <li class="nav-item" value="">
+				                    <a class="nav-href" href="#" target="_blank">Interactive APIs</a>
+				                </li>
+							</ul>
+						</div>
+					</div>		    	
+			    </div>
+
+			    <div class="row">
+			    	<div class="col-xs-12 text-center">
+			    		<p>© 2016 - Healtykick  All right  reserved.</p>
+			    	</div>
+			    </div>
+			</div>
+		</div>    
+	</footer>	
+
+{% endblock content %}
