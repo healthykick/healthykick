@@ -1,4 +1,5 @@
 healthykick/healthykick/settings.py
+healthykick/healthykick/wsgi.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
