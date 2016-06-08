@@ -16,7 +16,7 @@
 	</div>
 	<div class="bg-light-skyblue padding-md-Bottom-50">
 		<div class="container">
-		    <div class="row"> 
+		    <div class="row">
 		        <div class="col-md-12 text-center">
 		        	<div class="title wow fadeIn" data-wow-delay="1s"> 
 						<b>Grow your business. Sell on Healthykick.</b>
@@ -29,7 +29,16 @@
 					<h3>Create your Account</h3>					
 				</div>
 			</div>
-			<div class="row">				
+			<div class="row">
+				<div class="col-md-9">
+					{% if messages %}
+						<ul class="messages">
+						    {% for message in messages %}
+						    	<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+						    {% endfor %}
+						</ul>
+					{% endif %}
+				</div>
 	        	<div class="col-md-9 wow bounceInLeft" data-wow-delay="1.5s">
 					<div class="box box-success">
 						<div class="box-header with-border">
@@ -37,6 +46,7 @@
 						</div><!-- /.box-header -->
 						<!-- form start -->
 						<form class="form-horizontal" method="post" action="{% url 'seller:create_seller_details' %}">
+							{% csrf_token %}
 							<input type="hidden" name="path" value="{{request.get_full_path}}">
 							<input type="hidden" name="seller_id" value="{{seller_id}}">
 							<div class="box-body">

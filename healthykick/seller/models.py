@@ -19,7 +19,7 @@ class Seller(models.Model):
 
 class SellerDetail(models.Model):
 	seller = models.ForeignKey(Seller)
-	mobile_number = models.IntegerField(null=True)
+	mobile_number = models.CharField(max_length=20, null=True)
 	address = models.TextField(null=True)
 	city = models.CharField(max_length=255, null=True)
 	state = models.CharField(max_length=255, null=True)
@@ -44,7 +44,7 @@ class BussinessDetail(models.Model):
 class BankDetail(models.Model):
 	seller = models.ForeignKey(Seller)
 	account_holder_name = models.CharField(max_length=255)
-	bank_account_number = models.IntegerField(null=False)
+	bank_account_number = models.CharField(max_length=255)
 	ifsc_code = models.CharField(max_length=20)
 	bank_name = models.CharField(max_length=255)
 	bank_branch = models.CharField(max_length=255)

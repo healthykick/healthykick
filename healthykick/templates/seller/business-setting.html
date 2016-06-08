@@ -22,11 +22,24 @@
 				</div>
 			</div>
 
-			<div class="row">				
+			<div class="row">
+				<div class="col-md-9">
+					{% if messages %}
+						<div class="alert alert-danger">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						    {% for message in messages %}
+						    	<li>{{ message }}</li>
+						    {% endfor %}
+						</div>
+					{% endif %}
+				</div>
 	        	<div class="col-md-9 wow bounceInLeft" data-wow-delay="1.5s">
 					<div class="box box-success">
 						<!-- form start -->
 						<form class="form-horizontal" method="post" action="{% url 'seller:create_business_details' %}">
+							{% csrf_token %}
+							<input type="hidden" name="path" value="{{request.get_full_path}}">
+							<input type="hidden" name="seller_id" value="{{seller_id}}">
 							<div class="box-body">
 								<div class="box-header text-center">
 									<h3 class="box-title">Business details</h3>
@@ -48,7 +61,7 @@
 								<div class="form-group">
 									<label for="inputTIN" class="col-sm-3 control-label">TIN</label>
 									<div class="col-sm-9">
-										<input type="text" name="tim_number" class="form-control" id="Your TIN" placeholder="TIN">
+										<input type="text" name="tin_number" class="form-control" id="Your TIN" placeholder="TIN">
 									</div>
 								</div>
 
