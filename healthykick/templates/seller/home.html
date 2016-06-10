@@ -13,7 +13,7 @@
 					<div class="login-box wow fadeIn" data-wow-delay="1s">
 						<div class="login-box-body">
 							<p class="login-box-msg">Seller login</p>
-							<form method="post" action="#">
+							<form method="post" action="{% url 'seller:login' %}">
 								{% csrf_token %}
 								<input type="hidden" name="path" value="{{request.get_full_path}}">
 								<div class="form-group has-feedback">
@@ -72,6 +72,14 @@
 			<div class="row"> 
 				<div class="col-md-offset-4 col-md-4 col-xs-12 hold-transition">
 					<div class="login-box register-box wow tada">
+						{% if messages %}							
+							{% for message in messages %}
+							    <div class="alert alert-{{ message.tags }}">
+									<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							    	<li>{{ message }}</li>
+							    </div>
+							    {% endfor %}							
+						{% endif %}
 						<div class="login-box-body">
 							<p class="login-box-msg">Register today start your session</p>
 							<form method="post" action="{% url 'seller:create_account' %}">

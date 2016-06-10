@@ -5,6 +5,7 @@ from django.contrib import messages
 
 # Import models
 from .models import Seller, SellerDetail, BussinessDetail, BankDetail, StoreDetail
+from .authentication import login_required
 
 # Create your views here.
 
@@ -12,21 +13,61 @@ def index(request):
 	return render(request, 'seller/home.html')
 
 
+def login(request):
+    redirect_to = '/seller/seller_dashboard/'
+    
+    try:
+        seller = Seller.objects.get(email=request.POST.get('email', ''))
+    except Seller.DoesNotExist:
+        seller = None
+    
+    if not seller:
+        messages.error(request, 'User not found!')
+        return HttpResponseRedirect("/seller/")
+    else:
+        if hashers.check_password(request.POST['password'], seller.password, setter=None, preferred='default'):
+            request.session['email'] = seller.email
+            return HttpResponseRedirect(redirect_to)
+        else:
+            messages.warning(request, "Password didn't match!")
+            return HttpResponseRedirect("/seller/")
+
+
+@login_required(login_url='/seller')
+def logout(request):
+	try:
+		del request.session['email']
+	except KeyError:
+		pass
+	return HttpResponseRedirect('/seller/')
+
+
 def create_account(request):
 	if request.method == 'POST':
 		email = request.POST.get('email', False)
 		password = request.POST.get('password', False)
-		redirect_to = request.POST['path']
+		
 
-		if email and password:
-			password = hashers.make_password(password, salt=None, hasher='default')
-			seller = Seller.objects.create(email=email, password=password)
-			request.session['seller_id'] = seller.id
-			return HttpResponseRedirect('create_seller_details')
+		try:
+			seller = Seller.objects.get(email=email)
+		except Seller.DoseNotExist:
+			seller = None
 
+		if seller is None:
+			if email and password:
+				password = hashers.make_password(password, salt=None, hasher='default')
+				seller = Seller.objects.create(email=email, password=password)
+				request.session['seller_id'] = seller.id
+				redirect_to = 'create_seller_details'
+
+			else:
+				messages.error(request, 'Email and Passowrd fields are required.!')
+				redirect_to = request.POST['path']
 		else:
-			messages.error(request, 'Email and Passowrd fields are required.!')
-			return HttpResponseRedirect(redirect_to)
+			messages.error(request, 'Already registered.')
+			redirect_to = request.POST['path']
+		
+		return HttpResponseRedirect(redirect_to)
 
 
 def create_seller_details(request):
@@ -94,7 +135,8 @@ def create_business_details(request):
 			business_details = BussinessDetail.objects.create(seller=seller, bussiness_name=business_name, pan_number=pan_number, tin_number=tin_number, tan_number=tan_number)
 			bank_details = BankDetail.objects.create(seller=seller, account_holder_name=account_holder_name, bank_account_number=bank_account_number, ifsc_code=ifsc_code, bank_name=bank_name, bank_branch=bank_branch, bank_state=bank_state, bank_city=bank_city)
 			store_detail = StoreDetail.objects.create(seller=seller, store_name=store_name, store_description=store_description)
-			return HttpResponse("Successfully created")
+
+			return HttpResponseRedirect('/seller/seller_dashboard/')
 		else:
 			messages.error(request, 'All fileds are mendatory.!')
 			return HttpResponseRedirect('create_business_details')
@@ -105,3 +147,9 @@ def create_business_details(request):
 
 	else:
 		return False
+
+
+@login_required(login_url='/seller')
+def seller_dashboard(request):
+	if request.method == 'GET':
+		return render(request, 'seller/penal/dashboard.html')

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Log in</title>
+		<title>Healthykick</title>
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<link rel="stylesheet" href="{% static 'seller/res/bootstrap/css/bootstrap.min.css' %}">
 		<link rel="stylesheet" href="{% static 'seller/res/font-awesome/css/font-awesome.min.css' %}">
@@ -12,7 +12,8 @@
 		<link rel="stylesheet" href="{% static 'seller/res/textillate-master/css/animate.css' %}">
 		<link rel="stylesheet" href="{% static 'seller/res/css/margin-padding.css' %}">
 		<link rel="stylesheet" href="{% static 'seller/res/css/style.css' %}">
-		<link rel="stylesheet" href="{% static 'seller/res/css/fonts.css' %}">	
+		<link rel="stylesheet" href="{% static 'seller/res/css/fonts.css' %}">
+		<link rel="stylesheet" href="{% static 'seller/res/css/dashboard.css' %}">
 	</head>
 
 	<body class="hold-transition login-page">
@@ -31,11 +32,14 @@
 		
 
 	    <script>
-
+		    $("#menu-toggle").click(function(e) {
+		        e.preventDefault();
+		        $("#wrapper").toggleClass("toggled");
+		    });
 		
 		/*$( "#text-wapper" ).hover(function() {
 				$('.tlt').textillate();
-		});*/
+		});
 	      $(function () {
 	      	$('.tlt').textillate({
 	      		loop: true,
@@ -46,7 +50,7 @@
 	          radioClass: 'iradio_square-green',
 	          increaseArea: '20%' // optional
 	        });
-	      });
+	      });*/
 	    </script>
 	</body>
 </html>
