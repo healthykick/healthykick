@@ -50,7 +50,7 @@ def create_account(request):
 
 		try:
 			seller = Seller.objects.get(email=email)
-		except Seller.DoseNotExist:
+		except Seller.DoesNotExist:
 			seller = None
 
 		if seller is None:
@@ -84,7 +84,7 @@ def create_seller_details(request):
 
 		try:
 			seller = Seller.objects.get(id=seller_id)
-		except Seller.DoseNotExist:
+		except Seller.DoesNotExist:
 			seller = None
 
 		if phone_number and seller is not None:
@@ -109,7 +109,7 @@ def create_business_details(request):
 		seller_id = request.POST.get('seller_id', False)
 		try:
 			seller = Seller.objects.get(id=seller_id)
-		except Seller.DoseNotExist:
+		except Seller.DoesNotExist:
 			seller = None
 		
 		# Business Details
