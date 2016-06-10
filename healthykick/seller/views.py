@@ -58,6 +58,7 @@ def create_account(request):
 				password = hashers.make_password(password, salt=None, hasher='default')
 				seller = Seller.objects.create(email=email, password=password)
 				request.session['seller_id'] = seller.id
+				request.session['email'] = seller.email
 				redirect_to = 'create_seller_details'
 
 			else:
